@@ -1,23 +1,29 @@
-import { registerRootComponent } from 'expo';
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { registerRootComponent } from "expo";
+import { StatusBar } from "expo-status-bar";
+import React from "react";
+import { StyleSheet, Text } from "react-native";
+import LoadAssets from './components/LoadAssets'
+
+let customFonts = {
+  'regular': require('../assets/fonts/Roboto-Regular.ttf'),
+  'medium': require('../assets/fonts/Roboto-Medium.ttf'),
+  'mediumItalic': require('../assets/fonts/Roboto-MediumItalic.ttf'),
+  'bold': require('../assets/fonts/Roboto-Bold.ttf'),
+};
+
 
 function Root() {
   return (
-    <View style={styles.container}>
-      <Text>Start</Text>
+    <LoadAssets fonts={customFonts}>
+      <Text style={styles.text}>Hello World</Text>
       <StatusBar style="auto" />
-    </View>
+    </LoadAssets>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  text: {
+    fontFamily: 'mediumItalic'
   },
 });
 
